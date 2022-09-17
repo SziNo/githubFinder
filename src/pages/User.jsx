@@ -10,17 +10,18 @@ import { getUserAndRepos } from '../context/github/GithubActions'
 const User = () => {
   const { user, loading, repos, dispatch } = useContext(GithubContext)
 
-  const params = useParams()
+  const { login: params } = useParams()
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' })
     const getUserData = async () => {
-      const userData = await getUserAndRepos(params.login)
+      console.log(params)
+      const userData = await getUserAndRepos(params)
       dispatch({ type: 'GET_USER_AND_REPOS', payload: userData })
     }
 
     getUserData()
-  }, [dispatch, params.login])
+  }, [dispatch, params])
 
   const {
     name,
