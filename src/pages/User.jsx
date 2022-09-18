@@ -1,8 +1,7 @@
 import { useEffect, useContext } from 'react'
 import { GithubContext } from '../context/github/GithubContext'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 import Spinner from '../components/layout/Spinner'
 import RepoList from '../components/repos/RepoList'
 import { getUserAndRepos } from '../context/github/GithubActions'
@@ -14,6 +13,7 @@ const User = () => {
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' })
+
     const getUserData = async () => {
       const userData = await getUserAndRepos(params)
       dispatch({ type: 'GET_USER_AND_REPOS', payload: userData })
@@ -51,8 +51,8 @@ const User = () => {
         </div>
 
         <div className='grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8'>
-          <div className='custom-card-image mb-6 md:mb-0 '>
-            <div className='rounded-lg shadow-xl card image-full '>
+          <div className='custom-card-image mb-6 md:mb-0'>
+            <div className='rounded-lg shadow-xl card image-full'>
               <figure>
                 <img src={avatar_url} alt={name} className='opacity-90' />
               </figure>
