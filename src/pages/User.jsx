@@ -9,7 +9,7 @@ import { getUserAndRepos } from '../context/github/GithubActions'
 const User = () => {
   const { user, loading, repos, dispatch } = useContext(GithubContext)
 
-  const { login: params } = useParams()
+  const { userId: params } = useParams()
 
   useEffect(() => {
     dispatch({ type: 'SET_LOADING' })
