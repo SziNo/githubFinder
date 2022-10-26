@@ -1,7 +1,7 @@
 import { createContext, useReducer } from 'react'
 import alertReducer from './AlertReducer'
 
-export const AlertContext = createContext()
+export const AlertContext = createContext(null)
 
 export const AlertProvider = ({ children }) => {
   const initalState = null
